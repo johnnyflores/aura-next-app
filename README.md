@@ -28,14 +28,14 @@ A **hydration-safe**, **App Router-compatible** Next.js 16 demo with:
    - Fully type-safe and ESLint-clean
 
 4. **Client-only rendering**
-   - Wraps components in `ClientOnly` to avoid Next.js 13 **hydration errors**
+   - Wraps components in `ClientOnly` to avoid Next.js 16 **hydration errors**
    - Ensures all `localStorage` and hooks run only on the client
 
 ---
 
 ## Tech Stack
 
-- [Next.js 13 App Router](https://nextjs.org/docs/app)
+- [Next.js App Router](https://nextjs.org/docs/app)
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Apollo Client](https://www.apollographql.com/docs/react/)
@@ -69,11 +69,11 @@ styles/
 1. Clone the repo:
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/johnnyflores/aura-next-app.git
 cd aura-next-app
 ```
 
-2.- Install dependencies
+2. Install dependencies:
 
 ```bash
 npm install
