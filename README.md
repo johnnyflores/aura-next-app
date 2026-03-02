@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fullstack Next.js 16 + Apollo Demo
 
-## Getting Started
+A **hydration-safe**, **App Router-compatible** Next.js 16 demo with:
 
-First, run the development server:
+- **Login / Authentication** using `localStorage` (mock JWT)
+- **Dashboard** fetching data via **Apollo GraphQL**
+- **Mock CRUD** for adding items
+- **TypeScript** + **Tailwind CSS** styling
+- **Client-only rendering** to prevent SSR hydration issues
+
+---
+
+## Features
+
+1. **Home Page (`/`)**  
+   Redirects automatically based on authentication status.
+
+2. **Login Page (`/login`)**
+   - Client-side login (`demo/demo`)
+   - Redirects to Dashboard upon success
+   - Safe `localStorage` access using `ClientOnly` wrapper
+
+3. **Dashboard Page (`/dashboard`)**
+   - Fetches countries from [Countries GraphQL API](https://countries.trevorblades.com/) using Apollo Client
+   - Displays a list of items
+   - Add new items (mock CRUD)
+   - Logout functionality
+   - Fully type-safe and ESLint-clean
+
+4. **Client-only rendering**
+   - Wraps components in `ClientOnly` to avoid Next.js 13 **hydration errors**
+   - Ensures all `localStorage` and hooks run only on the client
+
+---
+
+## Tech Stack
+
+- [Next.js 13 App Router](https://nextjs.org/docs/app)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Apollo Client](https://www.apollographql.com/docs/react/)
+- [GraphQL](https://graphql.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+---
+
+## Project Structure
+
+```text
+app/
+├── layout.tsx
+├── page.tsx // Home redirect
+├── login/
+│ └── page.tsx // Login page
+├── dashboard/
+│ └── page.tsx // Dashboard page
+lib/
+├── apollo.ts // Apollo client
+├── auth.ts // Login/logout/auth helpers
+components/
+├── ClientOnly.tsx // Client-only wrapper
+styles/
+└── globals.css
+
+```
+
+## Installation
+
+1. Clone the repo:
+
+```bash
+git clone <your-repo-url>
+cd aura-next-app
+```
+
+2.- Install dependencies
+
+```bash
+npm install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Login credentials:
 
-## Learn More
+```bash
+Username: demo
+Password: demo
+```
 
-To learn more about Next.js, take a look at the following resources:
+Dashboard:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- View countries fetched from GraphQL
+- Add items
+- Logout to return to login
